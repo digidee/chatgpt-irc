@@ -167,14 +167,15 @@ def parse_outgoing(message):
 async def main_loop(**options):
     print(options.get("host"))
     
-   # ssl_type = options.get("ssl")
-   # if(options.get("allow_self_signed")):
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
+    ssl_type = options.get("ssl")
+    if(options.get("allow_self_signed")):
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        ssl_type = ctx
     
     reader, writer = await asyncio.open_connection(
-        host=options.get("server"), port=options.get("port"), ssl=ctx
+        host=options.get("server"), port=options.get("port"), ssl=ssl_type
     )
 
     sendline = functools.partial(send_line_to_writer, writer)
