@@ -1,11 +1,12 @@
 {
-    "server": "internetrelaychat.net",
+    "server": "irc.heimlok.net",
     "port": 6697,
-    "ssl": true,
+    "ssl": false,
+    "allow_self_signed": false,
     "nickname": "chatgpt",
     "ident": "chatgpt",
     "realname": "chatgpt",
-    "channels": ["#rj1"],
+    "channels": ["#digitest"],
     "auth_token": "",
     "cookie": "",
     "useragent": ""
